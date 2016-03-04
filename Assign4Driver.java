@@ -16,19 +16,21 @@ public class Assign4Driver
 				System.exit(-1);
 			}
 			processLinesInFile(args[0]);
+		
+			
 				
 	} 
 	
 	public static void solver(String w1, String w2)
 	{
-		//NEED TO CHANGE INPUTS TO READ FROM DOCUMENT
 		
 		// Create a word ladder solver object         
 		Assignment4Interface wordLadderSolver = new WordLadderSolver();
 		
 		try         
 		{             
-			List<String> result = wordLadderSolver.computeLadder("stone", "money");             
+			List<String> result = wordLadderSolver.computeLadder(w1, w2);  
+			result.clear();
 			//boolean correct = wordLadderSolver.validateResult("cones", "money", result);         
 		}         
 			
@@ -42,7 +44,7 @@ public class Assign4Driver
 	
 	public static void processLinesInFile(String filename) {
 
-		// Translator translator = new Translator();
+		
 		try {
 			FileReader freader = new FileReader(filename);
 			BufferedReader reader = new BufferedReader(freader);
