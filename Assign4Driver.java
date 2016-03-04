@@ -30,14 +30,14 @@ public class Assign4Driver
 		try         
 		{             
 			List<String> result = wordLadderSolver.computeLadder(w1, w2);  
+			//boolean correct = wordLadderSolver.validateResult("cones", "money", result);
 			result.clear();
-			//boolean correct = wordLadderSolver.validateResult("cones", "money", result);         
 		}         
 			
 		catch (NoSuchLadderException e)         
 			
 		{             
-				e.printStackTrace();         
+				System.err.println(e);         
 		}  
 		
 	}
@@ -51,9 +51,17 @@ public class Assign4Driver
 
 			for (String s = reader.readLine(); s != null; s = reader.readLine()) {
 				String words[] = s.split(" ");
-				String word1 = words[0];
-				String word2 = words[1];
-				solver(word1,word2);
+				if(words.length != 2)
+				{
+					System.err.println("Incorrect number of input arguments");
+				}
+				else
+					{
+					String word1 = words[0];
+					String word2 = words[1];
+					solver(word1,word2);
+					}
+				
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Error: File not found. Exiting...");
