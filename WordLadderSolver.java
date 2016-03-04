@@ -34,22 +34,31 @@ public class WordLadderSolver implements Assignment4Interface
     public List<String> computeLadder(String startWord, String endWord) throws NoSuchLadderException 
     {
     	
-    	
         // implement this method
     	makeDictionary();
+    	
+    	if(Dictionary.contains(startWord)==false)
+    	{
+    		throw new NoSuchLadderException("Invalid input start word");
+    	}
+    	if(Dictionary.contains(endWord)==false)
+    	{
+    		throw new NoSuchLadderException("Invalid input end word");
+    	}
+    	
     	int ladderExist = MakeLadder(startWord,endWord,0);
-    	if (ladderExist == 0){System.out.println("ladder does not exist");}
+    	if (ladderExist == 0){throw new NoSuchLadderException("Ladder Does Not Exist");}
     	else{System.out.println(SolutionList);}
     	return SolutionList;
     	
-        //throw new UnsupportedOperationException("Not implemented yet!");
+        
     	
     }
 
     @Override
     public boolean validateResult(String startWord, String endWord, List<String> wordLadder) 
     {
-        throw new UnsupportedOperationException("Not implemented yet!");
+    	  throw new UnsupportedOperationException("Not implemented yet!");
     }
 
     // add additional methods here
