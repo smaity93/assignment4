@@ -28,9 +28,24 @@ public class Assign4Driver
 		Assignment4Interface wordLadderSolver = new WordLadderSolver();
 		
 		try         
-		{             
-			List<String> result = wordLadderSolver.computeLadder(w1, w2);  
-			//boolean correct = wordLadderSolver.validateResult("cones", "money", result);
+		{         
+			
+			System.out.print("Input: "+w1 );
+			System.out.println(","+w2);
+			List<String> result = wordLadderSolver.computeLadder(w1, w2); 
+			System.out.println("Word Ladder: "+result);
+			
+			boolean correct = wordLadderSolver.validateResult(w1, w2, result);
+			if(correct == true)
+			{
+				System.out.println("Word Ladder is correct");
+				System.out.println(" ");
+			}
+			else
+			{
+				System.out.println("Word Ladder is incorrect");
+				System.out.println(" ");
+			}
 			result.clear();
 		}         
 			
