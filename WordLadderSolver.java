@@ -48,7 +48,7 @@ public class WordLadderSolver implements Assignment4Interface
     	
     	int ladderExist = MakeLadder(startWord,endWord,0);
     	if (ladderExist == 0){throw new NoSuchLadderException("Ladder Does Not Exist");}
-    	else{System.out.println(SolutionList);}
+    	
     	return SolutionList;
     	
         
@@ -58,9 +58,37 @@ public class WordLadderSolver implements Assignment4Interface
     @Override
     public boolean validateResult(String startWord, String endWord, List<String> wordLadder) 
     {
-    	  throw new UnsupportedOperationException("Not implemented yet!");
-    }
+    	System.out.print("Validating Word Ladder...");
+    	  //check to make sure start and end are right words
+    		if(wordLadder.get(0).equals(startWord)==false){return false;}
+    		if(wordLadder.get(wordLadder.size()-1).equals(endWord)==false){return false;}
 
+    	 //check to make sure each word in ladder exists in dictionary
+    		for (int i =0; i<wordLadder.size(); i++)
+    		{
+    			if(Dictionary.contains(wordLadder.get(i))==false){return false;}
+    		}
+    		
+    	 //check to make sure each word differs by one letter
+    		for(int i =0; i<wordLadder.size()-1; i++)
+    		{
+    			char[] word1 = wordLadder.get(i).toCharArray();
+    			char[] word2 = wordLadder.get(i+1).toCharArray();
+    			
+    			int count = 0;
+    	    	for(int j = 0; j<5; j++)
+    	    	{
+    	    		if(word1[j] == word2[j])
+    	    		{
+    	    			count = count+1;
+    	    		}
+    	    	}
+    	    	
+    	    	if(count<4){return false;}
+    		}
+    		
+    		return true;
+    }
     // add additional methods here
     public void makeDictionary(){
 		try{
