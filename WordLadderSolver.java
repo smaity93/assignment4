@@ -79,6 +79,12 @@ public class WordLadderSolver implements Assignment4Interface
     
     public int MakeLadder(String w1,String w2,int ind)
     {
+    	if(w1.equals(w2)==true)
+    	{
+    		SolutionList.add(w1);
+    		SolutionList.add(w2);
+    		return 1;
+    	}
     	if((SolutionList.contains(w1))==true)
     	{
     		return 0;
@@ -144,6 +150,11 @@ public class WordLadderSolver implements Assignment4Interface
     	
     }
     
+    //method: findDictWord
+    //returns a list of words that are exactly like input "word_str" except differ in the letter at index "ind"
+    //also takes into consideration the "endword_str", 
+    //     if there is a word that has the same letter in index "ind" as "endword_str", 
+    //	   then that word gets sorted into the beginning of the returned list.
     public List<String> findDictWord(String word_str, String endword_str, int ind)
     {
     	char[] word = word_str.toCharArray();
@@ -186,4 +197,3 @@ public class WordLadderSolver implements Assignment4Interface
     }
 	
 }
-
