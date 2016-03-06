@@ -58,36 +58,21 @@ public class WordLadderSolver implements Assignment4Interface
     @Override
     public boolean validateResult(String startWord, String endWord, List<String> wordLadder) 
     {
+    	boolean check; 
     	System.out.print("Validating Word Ladder...");
     	  //check to make sure start and end are right words
     		if(wordLadder.get(0).equals(startWord)==false){return false;}
     		if(wordLadder.get(wordLadder.size()-1).equals(endWord)==false){return false;}
 
     	 //check to make sure each word in ladder exists in dictionary
-    		for (int i =0; i<wordLadder.size(); i++)
-    		{
-    			if(Dictionary.contains(wordLadder.get(i))==false){return false;}
-    		}
+    		check = inDictionary(wordLadder);
+    		if(check == false ){return check;}
     		
     	 //check to make sure each word differs by one letter
-    		for(int i =0; i<wordLadder.size()-1; i++)
-    		{
-    			char[] word1 = wordLadder.get(i).toCharArray();
-    			char[] word2 = wordLadder.get(i+1).toCharArray();
-    			
-    			int count = 0;
-    	    	for(int j = 0; j<5; j++)
-    	    	{
-    	    		if(word1[j] == word2[j])
-    	    		{
-    	    			count = count+1;
-    	    		}
-    	    	}
-    	    	
-    	    	if(count<4){return false;}
-    		}
+    		check = oneLetterApart(wordLadder);
+    		if(check == false){return check;}
     		
-    		return true;
+    		return check;
     }
     // add additional methods here
     public void makeDictionary(){
@@ -231,6 +216,38 @@ public class WordLadderSolver implements Assignment4Interface
     	
     	return candidateWords;
     	
+    }
+    
+    public boolean inDictionary (List<String> wordLadder)
+    {
+    	for (int i =0; i<wordLadder.size(); i++)
+		{
+			if(Dictionary.contains(wordLadder.get(i))==false){return false;}
+		}
+    	
+    	return true;
+    }
+    
+    public boolean oneLetterApart(List<String> wordLadder)
+    {
+    	for(int i =0; i<wordLadder.size()-1; i++)
+		{
+			char[] word1 = wordLadder.get(i).toCharArray();
+			char[] word2 = wordLadder.get(i+1).toCharArray();
+			
+			int count = 0;
+	    	for(int j = 0; j<5; j++)
+	    	{
+	    		if(word1[j] == word2[j])
+	    		{
+	    			count = count+1;
+	    		}
+	    	}
+	    	
+	    	if(count<4){return false;}
+		}
+    	
+    	return true;
     }
 	
 }
