@@ -19,7 +19,7 @@ public class findDictWordTest {
 				List<String> candidateWords = test.findDictWord(w1,w2,0);
 				
 				System.out.print(candidateWords); //should be atone and stone
-				//assertEquals(candidateWords.size(),2);
+				assertEquals(candidateWords.size(),2);
 			
 	}
 
